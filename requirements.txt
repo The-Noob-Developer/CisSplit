@@ -4,3 +4,4 @@ SQLAlchemy
 python-dotenv
 PyMySQL # MySQL driver for SQLAlchemy
 pydantic[email]
+streamlit
