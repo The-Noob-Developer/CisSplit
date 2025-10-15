@@ -1,0 +1,49 @@
+{
+  "AI_Prompting_Strategy": [
+    {
+      "section": "API Routes",
+      "prompt_input": {
+        "task": "Generate a FastAPI backend for an Expense Splitter Service",
+        "requirements": {
+          "framework": "FastAPI",
+          "database": "SQLAlchemy ORM with MySQL or SQLite",
+          "features": [
+            "Create and retrieve users",
+            "Create groups with members",
+            "Add expenses under groups with split shares",
+            "Get per-user financial summary",
+            "Get per-group balance sheet"
+          ],
+          "response_models": "Use Pydantic schemas for all responses",
+          "validation": "Handle duplicate emails and missing user IDs with HTTPExceptions"
+        },
+        "constraints": [
+          "Use clean code and dependency injection for DB session",
+          "Ensure models.Base.metadata.create_all(bind=engine)",
+          "All endpoints return JSON responses",
+          "Implement logic to calculate share and balance"
+        ]
+      },
+      "ai_output": {
+        "filename": "main.py",
+        "description": "Generated FastAPI backend handling users, groups, and expense logic",
+        "code_features": [
+          "POST /users/ — register a new user",
+          "GET /users/ — list all users",
+          "POST /groups/ — create a group with member IDs",
+          "GET /groups/ — list all groups",
+          "POST /groups/{group_id}/expenses/ — add a new expense with split logic",
+          "GET /users/summary/ — show user financial summary",
+          "GET /groups/{group_id}/balances/ — show group-level balances"
+        ],
+        "logic_summary": {
+          "Expense_Split": "Divides total amount equally among all participants",
+          "User_Summary": "Calculates total paid, total share, and net balance per group",
+          "Group_Balance": "Computes net owed or owed-to amount for each member"
+        }
+      },
+      "implementation_decision": "Adopted all endpoints as suggested; added ValidationError handling for better input safety.",
+      "rationale": "AI output provided modular and RESTful design aligning with FastAPI conventions, requiring only minimal schema alignment."
+    }
+  ]
+}
